@@ -1,4 +1,4 @@
-
+Global / version := "0.0.22-cdk"
 
 // Our Scala versions.
 lazy val `scala-2.12` = "2.12.13"
@@ -22,6 +22,9 @@ lazy val commonSettings = Seq(
   developers   := List(
     Developer("tpolecat", "Rob Norris", "rob_norris@mac.com", url("http://www.tpolecat.org"))
   ),
+  githubOwner := "conduktor",
+  githubRepository := "skunk",
+  githubTokenSource := TokenSource.Environment("GITHUB_TOKEN"),
 
   // Headers
   headerMappings := headerMappings.value + (HeaderFileType.scala -> HeaderCommentStyle.cppStyleLineComment),
