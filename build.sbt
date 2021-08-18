@@ -1,4 +1,4 @@
-Global / version := "0.0.22-cdk"
+Global / version := "0.0.28-cdk"
 
 // Our Scala versions.
 lazy val `scala-2.12` = "2.12.13"
