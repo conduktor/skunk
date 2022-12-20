@@ -79,6 +79,12 @@ lazy val commonSettings = Seq(
   resolvers ++= Resolver.sonatypeOssRepos("public"),
   resolvers ++= Resolver.sonatypeOssRepos("snapshots"),
 
+  githubOwner := "conduktor",
+  githubRepository := "skunk",
+  githubTokenSource := TokenSource.Or(TokenSource.GitConfig("github.token"), TokenSource.Environment("GITHUB_TOKEN")),
+
+  publishTo := githubPublishTo.value,
+
   // Headers
   headerMappings := headerMappings.value + (HeaderFileType.scala -> HeaderCommentStyle.cppStyleLineComment),
   headerLicense  := Some(HeaderLicense.Custom(
