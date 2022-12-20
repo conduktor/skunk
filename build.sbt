@@ -252,6 +252,11 @@ lazy val docs = project
   .in(file("modules/docs"))
   .dependsOn(core.jvm)
   .disablePlugins(TypelevelCiSigningPlugin)
+  .enablePlugins(AutomateHeaderPlugin)
+  .enablePlugins(ParadoxPlugin)
+  .enablePlugins(ParadoxSitePlugin)
+  .enablePlugins(GhpagesPlugin)
+  .enablePlugins(MdocPlugin)
   .enablePlugins(NoPublishPlugin)
   .settings(commonSettings)
   .settings(
