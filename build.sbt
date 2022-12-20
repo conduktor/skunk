@@ -144,6 +144,7 @@ lazy val skunk = tlCrossRootProject
 lazy val core = crossProject(JVMPlatform, JSPlatform)
   .crossType(CrossType.Full)
   .in(file("modules/core"))
+  .disablePlugins(TypelevelCiSigningPlugin)
   .enablePlugins(AutomateHeaderPlugin)
   .settings(commonSettings)
   .settings(
@@ -178,6 +179,7 @@ lazy val refined = crossProject(JVMPlatform, JSPlatform)
   .crossType(CrossType.Pure)
   .in(file("modules/refined"))
   .dependsOn(core)
+  .disablePlugins(TypelevelCiSigningPlugin)
   .enablePlugins(AutomateHeaderPlugin)
   .settings(commonSettings)
   .settings(
@@ -190,6 +192,7 @@ lazy val circe = crossProject(JVMPlatform, JSPlatform)
   .crossType(CrossType.Pure)
   .in(file("modules/circe"))
   .dependsOn(core)
+  .disablePlugins(TypelevelCiSigningPlugin)
   .enablePlugins(AutomateHeaderPlugin)
   .settings(commonSettings)
   .settings(
@@ -204,6 +207,7 @@ lazy val tests = crossProject(JVMPlatform, JSPlatform)
   .crossType(CrossType.Full)
   .in(file("modules/tests"))
   .dependsOn(core, circe)
+  .disablePlugins(TypelevelCiSigningPlugin)
   .enablePlugins(AutomateHeaderPlugin, NoPublishPlugin)
   .settings(commonSettings)
   .settings(
@@ -228,6 +232,7 @@ lazy val tests = crossProject(JVMPlatform, JSPlatform)
 lazy val example = project
   .in(file("modules/example"))
   .dependsOn(core.jvm)
+  .disablePlugins(TypelevelCiSigningPlugin)
   .enablePlugins(AutomateHeaderPlugin, NoPublishPlugin)
   .settings(commonSettings)
   .settings(
@@ -246,11 +251,8 @@ lazy val example = project
 lazy val docs = project
   .in(file("modules/docs"))
   .dependsOn(core.jvm)
-  .enablePlugins(AutomateHeaderPlugin)
-  .enablePlugins(ParadoxPlugin)
-  .enablePlugins(ParadoxSitePlugin)
-  .enablePlugins(GhpagesPlugin)
-  .enablePlugins(MdocPlugin)
+  .disablePlugins(TypelevelCiSigningPlugin)
+  .enablePlugins(NoPublishPlugin)
   .settings(commonSettings)
   .settings(
     scalacOptions      := Nil,
